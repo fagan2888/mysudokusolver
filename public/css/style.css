@@ -1,7 +1,7 @@
 header { background-color:#3686BE}
 body { text-align:center; margin:0; }
 h1 { margin:0; padding:25px; font-style:italic; }
-table { width:650px; height:650px; margin:100px auto; border-collapse:collapse; }
+table { width:650px; height:650px; margin:100px auto 50px auto; border-collapse:collapse; }
 tr { border-left:3px solid #18B4CD; border-right:3px solid #3686BE; }
 tr:first-child, tr:nth-child(3n+1) { border-top:3px solid #3686BE; }
 tr:last-child { border-bottom:3px solid #3686BE; }
@@ -10,4 +10,6 @@ td:first-child, td:nth-child(3n+1) { border-left:3px solid #3686BE; }
 td:last-child { border-right:3px solid #3686BE; }
 input { border:none; height:100%; width:100%; font-size:30px; text-align:center; }
 input:focus { outline: none; }
-input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance:none; margin:0; }
+button { padding:5px 20px; font-size:25px; border:0; }
+button#solve { background-color:#3686BE; margin-right:20px; }
+button#clear { background-color:#CCC; }

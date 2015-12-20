@@ -27,6 +27,18 @@ for (var i = 0; i < inputs.length; i++) {
     });
 }
 
+// clear button clears all inputs
+var clearButton = document.getElementById("clear");
+clearButton.addEventListener("click", function() {
+    for (var i = 0; i < inputs.length; i++) {
+        inputs[i].value = "";
+    }
+});
+
+// solve button solves puzzle using client-side javascript
+var solveButton = document.getElementById("solve");
+solveButton.addEventListener("click", solvePuzzle);
+
 function navHorizontal(element, toRight) {
     // be sure to prevent default so tab doesn't get counted
     event.preventDefault();
@@ -76,4 +88,8 @@ function navVertical(element, down) {
 
     // focus on input element inside target in correct column
     targetRow.children[column-1].children[0].focus();
+}
+
+function solvePuzzle() {
+    // solve puzzle here
 }
