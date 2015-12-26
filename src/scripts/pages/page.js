@@ -1,4 +1,4 @@
-var solver = require('./solver');
+var solver = require('../modules/solver');
 
 // get all possible inputs
 var inputs = document.getElementsByTagName("input");
@@ -97,6 +97,24 @@ function navVertical(element, down) {
 
 function solvePuzzle()
 {
-    // call solver using input
-    // then adjust board
+    // create board representation using two-dimensional array
+    var board = [[], [], [], [], [], [], [], [], []];
+
+    for (var i = 0; i < inputs.length; i++) {
+        var row = Math.floor(i / 9);
+        var col = i % 9;
+
+        board[row][col] = inputs[i] === "" ? 0 : inputs[i];
+    }
+
+    // use solver module to solve
+    solver(board);
+
+    // fill in board using solved puzzle
+    for (var i = 0; i < inputs.length; i++) {
+        var row = Math.floor(i / 9);
+        var col = i % 9;
+
+        inputs[i] = board[row][col];
+    }
 }
