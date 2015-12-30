@@ -1,12 +1,12 @@
 var solver = require('../modules/solver');
 
 // get all possible inputs
-var inputs = document.getElementsByTagName("input");
+var inputs = document.getElementsByTagName('input');
 
 
 // add event listeners for various keys to the inputs
 for (var i = 0; i < inputs.length; i++) {
-    inputs[i].addEventListener("keydown", function(event) {
+    inputs[i].addEventListener('keydown', function(event) {
         var keyCode = event.which || event.keyCode;
 
         if (keyCode == 39 || keyCode == 9) {
@@ -33,16 +33,16 @@ for (var i = 0; i < inputs.length; i++) {
 }
 
 // clear button clears all inputs
-var clearButton = document.getElementById("clear");
-clearButton.addEventListener("click", function() {
+var clearButton = document.getElementById('clear');
+clearButton.addEventListener('click', function() {
     for (var i = 0; i < inputs.length; i++) {
-        inputs[i].value = "";
+        inputs[i].value = '';
     }
 });
 
 // solve button solves puzzle using client-side javascript
-var solveButton = document.getElementById("solve");
-solveButton.addEventListener("click", solverPuzzle);
+var solveButton = document.getElementById('solve');
+solveButton.addEventListener('click', solvePuzzle);
 
 function navHorizontal(element, toRight) {
     // be sure to prevent default so tab doesn't get counted
@@ -104,7 +104,7 @@ function solvePuzzle()
         var row = Math.floor(i / 9);
         var col = i % 9;
 
-        board[row][col] = inputs[i] === "" ? 0 : inputs[i];
+        board[row][col] = inputs[i].value === '' ? 0 : parseInt(inputs[i].value);
     }
 
     // use solver module to solve

@@ -1,4 +1,5 @@
 module.exports = function(board) {
+    console.log(board);
     checkSpaces(board);
 }
 
@@ -19,7 +20,7 @@ function checkSpaces(board) {
             }
         }
 
-        if (lastChanged === [-1, -1]) {
+        if (lastChanged[0] === -1 && lastChanged[1] === -1) {
             return false;
         }
     }
@@ -62,6 +63,8 @@ function checkSpace(board, position) {
 
         return true;
     }
+
+    console.log(candidates);
 
     return false;
 }
