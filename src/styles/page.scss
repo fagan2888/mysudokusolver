@@ -23,7 +23,7 @@ h1 {
 table {
   width: 650px;
   height: 650px;
-  margin: 100px auto 50px auto;
+  margin: 100px auto 30px auto;
   border-collapse: collapse;
 
   tr {
@@ -91,4 +91,11 @@ button {
       background-color: lighten($secondary-button-color, 5%);
     }
   }
+}
+
+#error-box {
+  color: #D8000C;
+  font-style: italic;
+  margin-bottom: 22px;
+  height:18px;
 }

@@ -3,7 +3,6 @@ var solver = require('../modules/solver');
 // get all possible inputs
 var inputs = document.getElementsByTagName('input');
 
-
 // add event listeners for various keys to the inputs
 for (var i = 0; i < inputs.length; i++) {
     inputs[i].addEventListener('keydown', function(event) {
@@ -35,6 +34,8 @@ for (var i = 0; i < inputs.length; i++) {
 // clear button clears all inputs
 var clearButton = document.getElementById('clear');
 clearButton.addEventListener('click', function() {
+    clearErrorBox();
+
     for (var i = 0; i < inputs.length; i++) {
         inputs[i].value = '';
     }
@@ -95,8 +96,11 @@ function navVertical(element, down) {
     targetRow.children[column-1].children[0].focus();
 }
 
+var errorBox = document.getElementById('error-box');
 function solvePuzzle()
 {
+    clearErrorBox();
+
     // create board representation using two-dimensional array
     var board = [[], [], [], [], [], [], [], [], []];
 
@@ -108,13 +112,23 @@ function solvePuzzle()
     }
 
     // use solver module to solve
-    solver(board);
+    var solved = solver(board);
 
-    // fill in board using solved puzzle
-    for (var i = 0; i < inputs.length; i++) {
-        var row = Math.floor(i / 9);
-        var col = i % 9;
+    if (solved) {
+        // fill in board using solved puzzle
+        for (var i = 0; i < inputs.length; i++) {
+            var row = Math.floor(i / 9);
+            var col = i % 9;
 
-        inputs[i] = board[row][col];
+            inputs[i].value = board[row][col];
+        }
     }
+    else {
+        errorBox.innerHTML = 'Could not solve puzzle. Please check input.';
+    }
+}
+
+function clearErrorBox()
+{
+    errorBox.innerHTML = '';
 }
