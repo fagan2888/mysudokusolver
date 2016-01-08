@@ -1,7 +1,14 @@
 $primary-color: #3686BE;
 $background-color: #f7f7f7;
 $secondary-button-color: #BBB;
-$font-color: #222;
+$font-color: #111;
+
+$header-height: 92px;
+$buttons-height: 135px;
+$table-margin-top: 95px;
+$table-margin-bottom: 55px;
+$table-size: calc(100vh - #{$header-height + $buttons-height + $table-margin-top + $table-margin-bottom});
+
 
 header {
   background-color: $primary-color;
@@ -10,92 +17,109 @@ header {
 body {
   text-align: center;
   margin: 0;
-  color: $font-color;
   background-color: $background-color;
 }
 
-h1 {
-  margin: 0;
-  padding: 25px;
-  font-style: italic;
+header {
+  height: $header-height;
+
+  h1 {
+    margin: 0;
+    padding: 25px;
+    font-style: italic;
+  }
 }
 
-table {
-  width: 650px;
-  height: 650px;
-  margin: 100px auto 30px auto;
-  border-collapse: collapse;
+#board {
+  display: flex;
+  align-items: center;
+  height: $table-size;
+  width: $table-size;
+  max-width: calc(100vw - 100px);
+  margin: $table-margin-top auto $table-margin-bottom auto;
+  text-align: center;
 
-  tr {
-    border-left:3px solid $primary-color;
-    border-right:3px solid $primary-color;
+  table {
+    width: 100%;
+    height: 100%;
+    max-height: calc(100vw - 100px);
+    border-collapse: collapse;
 
-    &:first-child, &:nth-child(3n+1) {
-      border-top:3px solid $primary-color;
-    }
-
-    &:last-child {
-      border-bottom:3px solid $primary-color;
-    }
-
-    td {
-      background-color: white;
-      border:1px solid #CCC;
+    tr {
+      border-right:3px solid $primary-color;
 
       &:first-child, &:nth-child(3n+1) {
-        border-left: 3px solid $primary-color;
+        border-top:3px solid $primary-color;
       }
 
       &:last-child {
-        border-right: 3px solid $primary-color;
+        border-bottom:3px solid $primary-color;
       }
 
-      input {
-        border: none;
-        height: 100%;
-        width: 100%;
-        font-size:30px;
-        text-align: center;
+      td {
+        background-color: white;
+        border:1px solid #CCC;
 
-        &:focus {
-          outline: none;
+        &:nth-child(3n+1) {
+          border-left: 3px solid $primary-color;
+        }
+
+        input {
+          border: none;
+          padding: 0;
+          width: 100%;
+          font-size:30px;
+          text-align: center;
+
+          &:focus {
+            outline: none;
+          }
         }
       }
     }
   }
 }
 
-button {
-  padding: 5px 20px;
-  font-size: 25px;
-  border: 0;
-  outline:0;
+#buttons {
+  height: $buttons-height;
+  box-sizing: border-box;
+  padding-bottom:70px;
 
-  &:hover {
-    cursor: pointer;
-  }
-
-  &#solve {
-    background-color: $primary-color;
-    margin-right: 20px;
+  button {
+    color: $font-color;
+    padding: 5px 20px;
+    font-size: 25px;
+    border: 0;
+    outline:0;
 
     &:hover {
-      background-color: lighten($primary-color, 5%);
+      cursor: pointer;
+      border: 0;
+    }
+
+    &#solve {
+      background-color: $primary-color;
+      margin-right: 20px;
+
+      &:hover {
+        background-color: lighten($primary-color, 5%);
+      }
+    }
+
+    &#clear {
+      background-color: $secondary-button-color;
+
+      &:hover {
+        background-color: lighten($secondary-button-color, 5%);
+      }
     }
   }
 
-  &#clear {
-    background-color: $secondary-button-color;
-
-    &:hover {
-      background-color: lighten($secondary-button-color, 5%);
-    }
+  #error-box {
+    color: #D8000C;
+    font-style: italic;
+    margin-top: 0;
+    margin-bottom: 22px;
+    height:18px;
   }
-}
-
-#error-box {
-  color: #D8000C;
-  font-style: italic;
-  margin-bottom: 22px;
-  height:18px;
 }
