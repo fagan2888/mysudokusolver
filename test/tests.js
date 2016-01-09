@@ -1,4 +1,4 @@
-var should = require('should');
+var should = require('chai').should();
 var solver = require('./../src/scripts/modules/solver');
 
 describe('Sudoku Solver', function() {
@@ -26,7 +26,7 @@ describe('Sudoku Solver', function() {
              [3,4,5,2,8,6,1,7,9]];
 
         solver(board);
-        board.should.deepEqual(desiredOutput);
+        board.should.deep.equal(desiredOutput);
     });
 
     it('row checker', function() {
@@ -53,7 +53,7 @@ describe('Sudoku Solver', function() {
               [0,0,0,0,0,0,0,9,0]];
 
         solver(board);
-        board.should.deepEqual(desiredOutput);
+        board.should.deep.equal(desiredOutput);
     });
 
     it('col checker', function() {
@@ -80,7 +80,7 @@ describe('Sudoku Solver', function() {
              [8,0,0,0,0,0,0,0,9]];
 
         solver(board);
-        board.should.deepEqual(desiredOutput);
+        board.should.deep.equal(desiredOutput);
     });
 
     it('incorrect input', function() {
