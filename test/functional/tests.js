@@ -102,5 +102,7 @@ casper.test.begin('Website works correctly in browser', function(test) {
         }, 'Displays error box when necessary', [clickSolve]);
     });
 
-    casper.run();
+    casper.run(function() {
+        test.done();
+    });
 });
