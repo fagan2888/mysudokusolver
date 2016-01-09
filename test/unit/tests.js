@@ -1,5 +1,5 @@
 var should = require('chai').should();
-var solver = require('./../src/scripts/modules/solver');
+var solver = require('../../src/scripts/modules/solver');
 
 describe('Sudoku Solver', function() {
     it('simple puzzle', function() {
