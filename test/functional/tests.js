@@ -74,7 +74,7 @@ casper.test.begin('Website works correctly in browser', function(test) {
             partiallyFillBoard(partialBoard, inputs);
 
             return readBoard(inputs);
-        }, partialBoard, 'Board is partially filled correctly', [partialBoard, partiallyFillBoard, readBoard]);
+        }, partialBoard, 'Board is filled correctly', [partialBoard, partiallyFillBoard, readBoard]);
 
         // ensure board is solved correctly when solve button is triggered
         test.assertEvalEquals(function (clickSolve, readBoard) {
